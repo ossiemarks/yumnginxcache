@@ -4,6 +4,8 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 
 ENV NGINX_VERSION 1.13.12-1~stretch
 ENV NJS_VERSION   1.13.12.0.2.0-1~stretch
+ENV PROXYDNS 
+ENV PROXYHOSTNAME
 
 RUN set -x \
 	&& apt-get update \

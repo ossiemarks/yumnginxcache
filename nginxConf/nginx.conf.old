@@ -16,7 +16,7 @@ server {
         root               /www/html/repo/$host;
         proxy_store        on;
         proxy_store_access user:rw group:rw all:r;
-        proxy_ignore_client_abort on;
+        proxy_ignore_client_abort on;\
     }
 }
 
