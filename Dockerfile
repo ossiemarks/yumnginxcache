@@ -4,8 +4,9 @@ LABEL maintainer="NGINX Docker Maintainers <docker-maint@nginx.com>"
 
 ENV NGINX_VERSION 1.13.12-1~stretch
 ENV NJS_VERSION   1.13.12.0.2.0-1~stretch
-ENV PROXYDNS 
-ENV PROXYHOSTNAME
+ARG PROXYDNS=172.18.0.1
+ARG PROXYHOSTNAME=172.18.0.57
+
 
 RUN set -x \
 	&& apt-get update \
@@ -93,6 +94,10 @@ RUN set -x \
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 	&& ln -sf /dev/stderr /var/log/nginx/error.log
+
+COPY nginxConf/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY nginxConf/nginx.conf /etc/nginx/nginx.conf
+
 
 EXPOSE 80
 
